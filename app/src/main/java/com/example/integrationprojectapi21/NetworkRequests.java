@@ -11,13 +11,22 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/**
+ * Network Request Class is Responsible for Network Connections and it uses OkHTTP client
+ */
 public class NetworkRequests {
+
 
     static String errResponse(String e){
         return "{" +
                 "\"error\":\""+e+"\""
                 +"}";
     }
+
+    /** (STEP 3)
+     * Applications That Uses SDK should SDK's interceptor when building OkHttpClient ,
+     * SDK's interceptor will only set additional header for Token Validation
+     */
     static OkHttpClient client = new OkHttpClient
             .Builder()
             .addInterceptor(Excal.getTokenSettingInterceptor())

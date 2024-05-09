@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+<!--  no extra permissions needed , SDK's permission will be merged in build-->
     <application
         android:name=".ClientApplication"
         android:allowBackup="true"

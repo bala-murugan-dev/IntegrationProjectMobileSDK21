@@ -28,6 +28,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * MainActivity Class is an Activity that contains single input box,
+ * By entering an URL for GET request (https://dog.ceo/api/breeds/image/random) and pressing the button
+ * will displays you json result in cardview
+ */
 public class MainActivity extends AppCompatActivity {
 
     CustomAdapter customAdapterObj;
@@ -66,14 +71,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *clickButtonListener method is listening for button presses in the MainActivity
+     * make a GET request to the URL and update the UI to show json response in cardview
+     * and a toast of api21 app clicked will be appeared
+     */
     public void clickButtonListener(View view) {
-        Toast.makeText(this, "Api 21 app  clicked", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Api 21  " +
+                "app  clicked", Toast.LENGTH_SHORT).show();
         EditText simpleEditText = (EditText) findViewById(R.id.simpleEditText);
         String editTextValue = simpleEditText.getText().toString();
 
         NetworkRequests.sendRequest(editTextValue,this);
     }
 
+    /**
+     *Update the View as CardView with json result from GET request
+     */
     public void updateList(String jsonData){
         try{
             ArrayList<String> keys_list = new ArrayList<>();

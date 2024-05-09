@@ -50,10 +50,17 @@ android {
 }
 
 dependencies {
+
+    //STEP 1 - Adding the dependancy
     implementation( files("/home/bala/AndroidStudioProjects/MobileSDK/mySDKLib/build/outputs/aar/mySDKLib-release.aar") )
+
+    // Okhttp dependancy for Network Connections
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
+
+    // Recycler view dependancy is used card view in application (SDK still works without this)
     implementation("androidx.recyclerview:recyclerview:1.3.2")
 
+    //Default Dependancies
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
