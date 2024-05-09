@@ -22,7 +22,16 @@ public class ClientApplication extends Application {
         super.onCreate();
 
 
-        //(STEP 2)  Excal SDK will be loaded and execute its business logic in separate thread
+        /**
+         * (STEP 2)   SDK will be loaded and execute its business logic in separate thread
+         * parameters1 - SDK needs App context to perform some operations
+         * parameter2 - md5 digest certificate of the app
+         *
+         * to get this md5 digest , run this command:
+         *  $apksigner verify --print-certs -v <apk-name>.apk
+         *
+         *  if there are more than one signers, mention the first signers md5 digest in this parameter
+        */
         Excal.getInstance(this,"9a2bd97760ccd4ff2bc6719ed9fe338b");
 
     }
