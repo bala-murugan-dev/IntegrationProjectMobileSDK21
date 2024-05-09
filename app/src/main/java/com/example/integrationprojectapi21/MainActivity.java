@@ -98,36 +98,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
-    public static String getSign(Context ctx){
-        try{
-            int flags ;
-
-            if(Build.VERSION.SDK_INT >=28){
-                flags = PackageManager.GET_SIGNING_CERTIFICATES;
-            }else{
-                flags = PackageManager.GET_SIGNATURES;
-            }
-
-            PackageInfo packageInfo = ctx.getPackageManager().getPackageInfo(ctx.getPackageName(), flags);
-
-            String HASH = "ERR";
-            if(Build.VERSION.SDK_INT >=28){
-                SigningInfo sinfo = packageInfo.signingInfo;
-                Signature firstSign = sinfo.getApkContentsSigners()[0];
-                byte[] firstSignByteArr = firstSign.toByteArray();
-                HASH = Excal.hash(firstSignByteArr);
-            }else{
-                Signature firstSign = packageInfo.signatures[0];
-                byte[] firstSignByteArr = firstSign.toByteArray();
-                HASH = Excal.hash(firstSignByteArr);
-            }
-            return HASH;
-
-        }catch (Exception e) {
-            return "ERR";
-        }
-
-    }
 }

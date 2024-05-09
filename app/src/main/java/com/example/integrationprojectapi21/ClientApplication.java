@@ -1,6 +1,9 @@
 package com.example.integrationprojectapi21;
 
 import android.app.Application;
+import android.content.Context;
+import android.os.Build;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.example.mysdklib.Excal;
