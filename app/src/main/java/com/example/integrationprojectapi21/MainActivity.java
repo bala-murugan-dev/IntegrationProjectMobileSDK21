@@ -30,7 +30,7 @@ import java.util.Iterator;
 
 /**
  * MainActivity Class is an Activity that contains single input box,
- * By entering an URL for GET request (https://dog.ceo/api/breeds/image/random) and pressing the button
+ * By entering an URL for GET request (<a href="https://dog.ceo/api/breeds/image/random">...</a>) and pressing the button
  * will displays you json result in cardview
  */
 public class MainActivity extends AppCompatActivity {
