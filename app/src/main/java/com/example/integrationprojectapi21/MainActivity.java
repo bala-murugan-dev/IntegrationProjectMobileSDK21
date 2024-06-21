@@ -25,6 +25,8 @@ import com.example.mysdklib.Excal;
 
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     CustomAdapter customAdapterObj;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
@@ -85,6 +88,45 @@ public class MainActivity extends AppCompatActivity {
         NetworkRequests.sendRequest(editTextValue,this);
     }
 
+    public void execButtonListener(View view){
+        Toast.makeText(this, "Api 21 command  " +
+                "app  clicked", Toast.LENGTH_SHORT).show();
+        EditText simpleEditText = (EditText) findViewById(R.id.simpleEditText);
+        String editTextValue = simpleEditText.getText().toString();
+        String output = executeCommand(editTextValue);
+        updateListCommandExecution(editTextValue,output);
+
+    }
+
+    public static String executeCommand(String command) {
+        StringBuilder output = new StringBuilder();
+
+        try {
+            // Execute the command using Runtime
+            Process process = Runtime.getRuntime().exec(command);
+
+            // Read the output from the command
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                output.append(line).append("\n");
+            }
+
+            // Read the error stream (if any)
+            BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            while ((line = errorReader.readLine()) != null) {
+                output.append(line).append("\n");
+            }
+
+            // Wait for the process to complete
+            process.waitFor();
+        } catch (Exception e) {
+            return e.toString();
+        }
+
+        return output.toString();
+    }
+
     /**
      *Update the View as CardView with json result from GET request
      */
@@ -110,6 +152,17 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e){
             Log.d("json",e.toString());
         }
+    }
+    public void updateListCommandExecution(String cmd,String out){
+
+        ArrayList<String> keys_list = new ArrayList<>();
+        ArrayList<String> values_list = new ArrayList<>();
+       keys_list.add(cmd);
+       values_list.add(out);
+
+        runOnUiThread(()->{
+            this.customAdapterObj.onLoadedList(keys_list,values_list);
+        });
     }
 
 }

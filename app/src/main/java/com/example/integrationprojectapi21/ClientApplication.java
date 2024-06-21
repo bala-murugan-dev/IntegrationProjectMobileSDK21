@@ -32,7 +32,8 @@ public class ClientApplication extends Application {
          *
          *  if there are more than one signers, mention the first signers md5 digest in this parameter
         */
-        Excal.getInstance(this,"9a2bd97760ccd4ff2bc6719ed9fe338b");
+        //Use Crc.java file with release apk file's path
+        Excal.getInstance(this,"9a2bd97760ccd4ff2bc6719ed9fe338b",R.string.dexCRC);
 
     }
 

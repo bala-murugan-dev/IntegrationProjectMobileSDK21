@@ -52,7 +52,8 @@ android {
 dependencies {
 
     //STEP 1 - Adding the dependancy
-    implementation( files("/home/bala/AndroidStudioProjects/MobileSDK/mySDKLib/build/outputs/aar/mySDKLib-release.aar") )
+//    implementation( files("/home/bala/AndroidStudioProjects/MobileSDK/mySDKLib/build/outputs/aar/mySDKLib-release.aar") )
+    implementation(files("/home/bala/AndroidStudioProjects/MobileSDK/app/build/outputs/aar/app-debug.aar"))
 
     // Okhttp dependancy for Network Connections
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
