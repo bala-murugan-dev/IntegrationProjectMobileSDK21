@@ -24,13 +24,14 @@ public class NetworkRequests {
     }
 
     /** (STEP 3)
-     * Applications That Uses SDK should SDK's interceptor when building OkHttpClient ,
-     * SDK's interceptor will only set additional header for Token Validation
+     * Applications That Uses SDK should SDK's Okhttp Client builder
      */
-    static OkHttpClient client = new OkHttpClient
-            .Builder()
-            .addInterceptor(Excal.getTokenSettingInterceptor())
-            .build();
+    static OkHttpClient client ;
+    static {
+        Excal.setOkHTTPClientBuilder(new OkHttpClient.Builder());
+        client = Excal.getOkHTTPClientBuilder();
+    }
+
 
 
     public String run(String url) throws IOException {
